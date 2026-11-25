@@ -1,0 +1,38 @@
+class Movie {
+  String title = "";
+  String studio = "";
+  String rating = "PG";
+
+  Movie(String t, String s, [String? r]) {
+    title = t;
+    studio = s;
+    if (r != null) {
+      rating = r;
+    } else {
+      rating = "PG";
+    }
+  }
+
+  List<Movie> getPG(List<Movie> movies) {
+    List<Movie> result = [];
+    for (int i = 0; i < movies.length; i++) {
+      if (movies[i].rating.contains("PG")) {
+        result.add(movies[i]);
+      }
+    }
+    return result;
+  }
+}
+
+void main() {
+  Movie m1 = Movie("Casino Royale", "Eon Productions", "PG13");
+  Movie m2 = Movie("Toy Story", "Pixar");
+  Movie m3 = Movie("Action Film", "Studio X", "R");
+
+  List<Movie> allMovies = [m1, m2, m3];
+  List<Movie> pgMovies = m1.getPG(allMovies);
+
+  for (int i = 0; i < pgMovies.length; i++) {
+    print(pgMovies[i].title + " - " + pgMovies[i].rating);
+  }
+}

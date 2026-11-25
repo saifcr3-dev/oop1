@@ -1,0 +1,42 @@
+class BankAccount {
+  String accountID = "";
+  double balance = 0;
+
+  BankAccount(double initialBalance) {
+    balance = initialBalance;
+  }
+
+  BankAccount.empty() {
+    balance = 0;
+  }
+
+  void withdraw(double amount) {
+    if (amount > 0 && amount <= balance) {
+      balance = balance - amount;
+      print("Withdraw success. New balance: " + balance.toString());
+    } else {
+      print("Not enough balance or invalid amount.");
+    }
+  }
+
+  void deposit(double amount) {
+    if (amount > 0) {
+      balance = balance + amount;
+      print("Deposit success. New balance: " + balance.toString());
+    } else {
+      print("Invalid amount.");
+    }
+  }
+}
+
+void main() {
+  BankAccount acc1 = BankAccount(500);
+  acc1.accountID = "ACC101";
+  acc1.deposit(200);
+  acc1.withdraw(150);
+
+  BankAccount acc2 = BankAccount.empty();
+  acc2.accountID = "ACC102";
+  acc2.withdraw(50);
+  acc2.deposit(1000);
+}
